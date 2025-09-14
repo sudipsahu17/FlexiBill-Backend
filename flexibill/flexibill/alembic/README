@@ -1,0 +1,27 @@
+In your project root (same level as main.py), run:
+    * alembic init alembic
+
+This creates:
+    * alembic.ini: Alembic config file
+    * alembic/:
+    * env.py: Migration environment config
+    * versions/: Where your migration scripts will go
+
+In alembic.ini, set your database URL:
+    * sqlalchemy.url = postgresql://user:password@localhost/dbname
+
+Edit alembic/env.py to Import Your Models. Find this section in env.py and replace or update it:
+    # Import your models' MetaData here
+    from app.models import Base  # Assuming you defined Base = declarative_base()
+    target_metadata = Base.metadata
+This allows Alembic to auto-generate migration scripts from model changes.
+
+To generate a new migration:
+    * alembic revision --autogenerate -m "Initial migration"
+
+To upgrade and downgrade migrations:
+    * alembic upgrade head
+    * alembic -c config.ini upgarde +1
+    * alembic downgarde -2
+
+alembic will auto track the model chnages and create migration files and store it inside versions/ directory

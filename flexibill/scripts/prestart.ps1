@@ -1,0 +1,6 @@
+$env:ENV = "DEV"
+$env:MODE = "DEV"
+$env:POSTGRES_SERVER = "host.docker.internal:5432"
+$env:POSTGRES_USER = "postgres"
+$env:POSTGRES_PASSWORD = "postgres"
+$env:POSTGRES_DB = "test_db"
